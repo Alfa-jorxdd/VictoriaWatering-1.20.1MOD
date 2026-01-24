@@ -1,6 +1,9 @@
 package com.alfa_jor.victoriawatering;
 
+import com.alfa_jor.victoriawatering.item.ModCreativeModTabs;
+import com.alfa_jor.victoriawatering.item.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -23,7 +26,12 @@ public class VictoriaWatering
     public VictoriaWatering(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModCreativeModTabs.register(bus);
+
+        ModItems.register(bus);
+
         MinecraftForge.EVENT_BUS.register(this);
+        bus.addListener(this::addCreative);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event){
@@ -31,7 +39,10 @@ public class VictoriaWatering
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event){
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.WATERING_CAN);
+            event.accept(ModItems.MANGO);
+        }
     }
 
     @SubscribeEvent
