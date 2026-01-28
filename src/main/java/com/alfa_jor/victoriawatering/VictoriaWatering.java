@@ -1,5 +1,6 @@
 package com.alfa_jor.victoriawatering;
 
+import com.alfa_jor.victoriawatering.block.ModBlocks;
 import com.alfa_jor.victoriawatering.item.ModCreativeModTabs;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import com.mojang.logging.LogUtils;
@@ -25,10 +26,12 @@ public class VictoriaWatering
 
     public VictoriaWatering(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        //PESTAÑA CREATIVO
         ModCreativeModTabs.register(bus);
 
+        //OBJETOS
         ModItems.register(bus);
+        ModBlocks.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
         bus.addListener(this::addCreative);

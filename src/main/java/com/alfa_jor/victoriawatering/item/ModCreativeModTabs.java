@@ -1,6 +1,7 @@
 package com.alfa_jor.victoriawatering.item;
 
 import com.alfa_jor.victoriawatering.VictoriaWatering;
+import com.alfa_jor.victoriawatering.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,12 +16,16 @@ public class ModCreativeModTabs {
             Registries.CREATIVE_MODE_TAB, VictoriaWatering.MOD_ID
     );
 
+    //PESTAÑA EN EL CREATIVO
     public static final RegistryObject<CreativeModeTab> VICWAT_TAB = CREATIVE_MOD_TABS.register("vicwat_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MANGO.get()))
                     .title(Component.translatable("creativetab.vicwat_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        //ITEMS
                         output.accept(ModItems.WATERING_CAN.get());
                         output.accept(ModItems.MANGO.get());
+                        //BLOQUES
+                        output.accept(ModBlocks.SUNFLOWER_BLOCK.get());
                     })
                     .build()
             );
