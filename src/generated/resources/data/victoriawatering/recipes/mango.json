@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "food",
-  "pattern": [
-    " # ",
-    "#F#",
-    " # "
-  ],
+  "category": "misc",
   "key": {
-    "#": {
+    "A": {
       "item": "minecraft:golden_apple"
     },
-    "F": {
+    "S": {
       "item": "victoriawatering:sunflower_block"
     }
   },
+  "pattern": [
+    " A ",
+    "ASA",
+    " A "
+  ],
   "result": {
     "item": "victoriawatering:mango"
   },

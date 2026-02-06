@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_golden_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:golden_apple"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sunflower_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "victoriawatering:sunflower_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "victoriawatering:mango"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_golden_apple",
+      "has_sunflower_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "victoriawatering:mango"
+    ]
+  },
+  "sends_telemetry_event": false
+}

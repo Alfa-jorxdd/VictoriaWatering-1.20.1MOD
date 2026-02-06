@@ -15,7 +15,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-
+        this.dropSelf(ModBlocks.SUNFLOWER_BLOCK.get());
     }
 
     @Override

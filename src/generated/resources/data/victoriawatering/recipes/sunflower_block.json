@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
   "key": {
-    "#": {
+    "S": {
       "item": "minecraft:sunflower"
     }
   },
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
   "result": {
     "item": "victoriawatering:sunflower_block"
-  }
+  },
+  "show_notification": true
 }
