@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagGen extends ItemTagsProvider {
 
-    public ModItemTagGen(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+    public ModItemTagGen(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
         super(p_275343_, p_275729_, p_275322_, VictoriaWatering.MOD_ID, existingFileHelper);
     }
 
