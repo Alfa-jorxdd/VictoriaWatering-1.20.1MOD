@@ -27,7 +27,10 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ModItems.MANGO);
-        handheldItem(ModItems.WATERING_CAN);
+        simpleItem(ModItems.WATERING_CAN);
+        simpleItem(ModItems.CILANTRO);
+        simpleItem(ModItems.CILANTRO_SEEDS);
+        simpleItem(ModItems.FLOWER_CILANTRO);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

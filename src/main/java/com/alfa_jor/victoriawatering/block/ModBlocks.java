@@ -1,6 +1,7 @@
 package com.alfa_jor.victoriawatering.block;
 
 import com.alfa_jor.victoriawatering.VictoriaWatering;
+import com.alfa_jor.victoriawatering.block.custom.CilantroCropblock;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,14 +23,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> SUNFLOWER_BLOCK = registerBlock("sunflower_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
 
-    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block){
+    public static final RegistryObject<Block> CILANTRO_CROP = BLOCKS.register("cilantro_crop",
+            () -> new CilantroCropblock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;
     }
 
-    private static <T extends Block>RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
-        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),new Item.Properties()));
+    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
+        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus){

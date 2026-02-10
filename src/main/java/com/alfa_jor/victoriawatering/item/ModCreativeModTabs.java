@@ -24,6 +24,9 @@ public class ModCreativeModTabs {
                         //ITEMS
                         output.accept(ModItems.WATERING_CAN.get());
                         output.accept(ModItems.MANGO.get());
+                        output.accept(ModItems.CILANTRO_SEEDS.get());
+                        output.accept(ModItems.CILANTRO.get());
+                        output.accept(ModItems.FLOWER_CILANTRO.get());
                         //BLOQUES
                         output.accept(ModBlocks.SUNFLOWER_BLOCK.get());
                     })

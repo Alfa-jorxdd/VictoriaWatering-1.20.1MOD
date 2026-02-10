@@ -42,10 +42,7 @@ public class VictoriaWatering
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event){
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.WATERING_CAN);
-            event.accept(ModItems.MANGO);
-        }
+
     }
 
     @SubscribeEvent
