@@ -32,47 +32,77 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
 
-        LootItemCondition.Builder age3 =
+        LootItemCondition.Builder age3Cilantro =
                 LootItemBlockStatePropertyCondition
                         .hasBlockStateProperties(ModBlocks.CILANTRO_CROP.get())
                         .setProperties(StatePropertiesPredicate.Builder.properties()
                                 .hasProperty(CilantroCropblock.AGE, 3));
-        LootItemCondition.Builder age4 =
+        LootItemCondition.Builder age4Cilantro =
                 LootItemBlockStatePropertyCondition
                         .hasBlockStateProperties(ModBlocks.CILANTRO_CROP.get())
                         .setProperties(StatePropertiesPredicate.Builder.properties()
                                 .hasProperty(CilantroCropblock.AGE, 4));
 
+        LootItemCondition.Builder age8Grana =
+                LootItemBlockStatePropertyCondition
+                        .hasBlockStateProperties(ModBlocks.GRANA_CROP.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                .hasProperty(CilantroCropblock.AGE, 8));
+
         this.add(ModBlocks.CILANTRO_CROP.get(), block -> this.applyExplosionDecay(
                 block, LootTable.lootTable()
                                 .withPool(LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1))
-                                        .when(age3.invert())
-                                        .when(age4.invert())
+                                        .when(age3Cilantro.invert())
+                                        .when(age4Cilantro.invert())
                                         .add(LootItem.lootTableItem(ModItems.CILANTRO_SEEDS.get()))
                                 )
                                 .withPool(LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1))
-                                        .when(age3)
+                                        .when(age3Cilantro)
                                         .add(LootItem.lootTableItem(ModItems.CILANTRO.get())
                                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
                                 )
                                 .withPool(LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1))
-                                        .when(age4)
+                                        .when(age4Cilantro)
                                         .add(LootItem.lootTableItem(ModItems.FLOWER_CILANTRO.get())
                                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
                                 )
                                 .withPool(LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1))
-                                        .when(age4)
-                                        .add(LootItem.lootTableItem(ModItems.CILANTRO_SEEDS.get())
-                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
+                                        .when(age4Cilantro)
+                                        .add(LootItem.lootTableItem(ModItems.CILANTRO_SEEDS.get()))
                                 )
                 )
                 );
 
         this.dropSelf(ModBlocks.SUNFLOWER_BLOCK.get());
+
+        this.add(ModBlocks.GRANA_CROP.get(), block -> applyExplosionDecay(
+                block, LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(age8Grana)
+                                .add(LootItem.lootTableItem(ModItems.GRANA.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0,3))))
+
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(age8Grana.invert())
+                                .add(LootItem.lootTableItem(ModItems.GRANA_SEEDS.get()))
+
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(age8Grana)
+                                .add(LootItem.lootTableItem(ModItems.GRANA_SEEDS.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0,3))))
+
+                        )
+                )
+        );
 
 
     }

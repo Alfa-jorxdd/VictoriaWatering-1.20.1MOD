@@ -32,6 +32,13 @@ public class ModItems {
             () -> new Item(new Item.Properties())
     );
 
+    public static final RegistryObject<Item> GRANA = ITEMS.register("grana",
+            () -> new Item(new Item.Properties().food(ModFoods.GRANA)));
+
+    public static final RegistryObject<Item> GRANA_SEEDS = ITEMS.register("grana_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.GRANA_CROP.get(),new Item.Properties())
+    );
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

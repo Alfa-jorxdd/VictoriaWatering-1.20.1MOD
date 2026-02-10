@@ -2,6 +2,7 @@ package com.alfa_jor.victoriawatering.block;
 
 import com.alfa_jor.victoriawatering.VictoriaWatering;
 import com.alfa_jor.victoriawatering.block.custom.CilantroCropblock;
+import com.alfa_jor.victoriawatering.block.custom.GranaCropBlock;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -25,6 +26,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CILANTRO_CROP = BLOCKS.register("cilantro_crop",
             () -> new CilantroCropblock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+
+    public static final RegistryObject<Block> GRANA_CROP = BLOCKS.register("grana_crop",
+            () -> new GranaCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -3,6 +3,7 @@ package com.alfa_jor.victoriawatering.datagen;
 import com.alfa_jor.victoriawatering.VictoriaWatering;
 import com.alfa_jor.victoriawatering.block.ModBlocks;
 import com.alfa_jor.victoriawatering.block.custom.CilantroCropblock;
+import com.alfa_jor.victoriawatering.block.custom.GranaCropBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -23,6 +24,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SUNFLOWER_BLOCK);
 
         createCropBlockStates(ModBlocks.CILANTRO_CROP.get(), CilantroCropblock.AGE, "cilantro_stage", "cilantro_stage");
+        createCropBlockStates(ModBlocks.GRANA_CROP.get(), GranaCropBlock.AGE, "grana_stage", "grana_stage");
     }
 
     private void createCropBlockStates(Block pBlock, IntegerProperty pCropAgeProperty, String pModelName, String pTextureName){

@@ -31,6 +31,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.CILANTRO);
         simpleItem(ModItems.CILANTRO_SEEDS);
         simpleItem(ModItems.FLOWER_CILANTRO);
+        simpleItem(ModItems.GRANA);
+        simpleItem(ModItems.GRANA_SEEDS);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){
