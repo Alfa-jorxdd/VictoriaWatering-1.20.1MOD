@@ -77,7 +77,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 )
                 );
 
-        this.dropSelf(ModBlocks.SUNFLOWER_BLOCK.get());
+
 
         this.add(ModBlocks.GRANA_CROP.get(), block -> applyExplosionDecay(
                 block, LootTable.lootTable()
@@ -103,6 +103,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         )
                 )
         );
+
+        this.dropSelf(ModBlocks.SUNFLOWER_BLOCK.get());
+        this.dropSelf(ModBlocks.MAGIC_COMPOSTER.get());
 
 
     }

@@ -11,7 +11,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -25,6 +27,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         createCropBlockStates(ModBlocks.CILANTRO_CROP.get(), CilantroCropblock.AGE, "cilantro_stage", "cilantro_stage");
         createCropBlockStates(ModBlocks.GRANA_CROP.get(), GranaCropBlock.AGE, "grana_stage", "grana_stage");
+
+        blockWithItem(ModBlocks.MAGIC_COMPOSTER);
     }
 
     private void createCropBlockStates(Block pBlock, IntegerProperty pCropAgeProperty, String pModelName, String pTextureName){

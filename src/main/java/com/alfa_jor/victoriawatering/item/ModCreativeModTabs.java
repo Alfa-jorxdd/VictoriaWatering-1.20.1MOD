@@ -31,6 +31,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.GRANA_SEEDS.get());
                         //BLOQUES
                         output.accept(ModBlocks.SUNFLOWER_BLOCK.get());
+                        output.accept(ModBlocks.MAGIC_COMPOSTER.get());
                     })
                     .build()
             );

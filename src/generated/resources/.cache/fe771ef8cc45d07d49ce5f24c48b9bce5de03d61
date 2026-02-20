@@ -1,6 +1,7 @@
-// 1.20.1	2026-02-10T14:44:35.5903827	Block States: victoriawatering
+// 1.20.1	2026-02-20T14:40:12.6088239	Block States: victoriawatering
 5e880fb6dbf4aa276f7ae7fab051132a39a504d0 assets/victoriawatering/blockstates/cilantro_crop.json
 ed92f5af1a26cbfcfea5c510c19b03e51c609d20 assets/victoriawatering/blockstates/grana_crop.json
+fb369de6c43dc67310c28a9d7da6c1675bcbe62f assets/victoriawatering/blockstates/magic_composter.json
 592e7c14ff130e57a9c2888770fdb920bf726115 assets/victoriawatering/blockstates/sunflower_block.json
 c5d4fcbc7bd81639815ee1b36401a46c1830b3c4 assets/victoriawatering/models/block/cilantro_stage0.json
 0f94c701f937fa8d12f0cb0bda4340b5a4143b2e assets/victoriawatering/models/block/cilantro_stage1.json
@@ -16,5 +17,7 @@ e80e576a9f1518192fc6a9ae75d34384100e7702 assets/victoriawatering/models/block/gr
 d3f5ff882adfed87f738215ab5fadc2ae450c842 assets/victoriawatering/models/block/grana_stage6.json
 ff93391ec22a5d0eabcbf562e32a6d0ff46efe10 assets/victoriawatering/models/block/grana_stage7.json
 020ac7ec1399dadf0aba9d83ae6cc5dbec65773a assets/victoriawatering/models/block/grana_stage8.json
+eec8ce93d7ccffab7a5b550553dbd85322524158 assets/victoriawatering/models/block/magic_composter.json
 287d1b56ecf353ff575e56047d05c00d1937ad33 assets/victoriawatering/models/block/sunflower_block.json
+71e4dbede31c09e867b40b46706a23a0584574ca assets/victoriawatering/models/item/magic_composter.json
 fd8475ef938937d53d2d424fb798d0c42971d153 assets/victoriawatering/models/item/sunflower_block.json

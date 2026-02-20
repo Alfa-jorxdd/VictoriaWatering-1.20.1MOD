@@ -1,9 +1,13 @@
 package com.alfa_jor.victoriawatering;
 
 import com.alfa_jor.victoriawatering.block.ModBlocks;
+import com.alfa_jor.victoriawatering.block.entity.ModBlockEntities;
 import com.alfa_jor.victoriawatering.item.ModCreativeModTabs;
 import com.alfa_jor.victoriawatering.item.ModItems;
+import com.alfa_jor.victoriawatering.screen.MagicComposterScreen;
+import com.alfa_jor.victoriawatering.screen.ModMenuTypes;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,6 +37,10 @@ public class VictoriaWatering
         ModItems.register(bus);
         ModBlocks.register(bus);
 
+        ModMenuTypes.register(bus);
+
+        ModBlockEntities.register(bus);
+
         MinecraftForge.EVENT_BUS.register(this);
         bus.addListener(this::addCreative);
     }
@@ -55,6 +63,8 @@ public class VictoriaWatering
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event){
 
+
+            MenuScreens.register(ModMenuTypes.MAGIC_COMPOSTER_MENU.get(), MagicComposterScreen::new);
         }
     }
 
