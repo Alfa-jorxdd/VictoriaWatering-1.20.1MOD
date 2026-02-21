@@ -29,9 +29,11 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.FLOWER_CILANTRO.get());
                         output.accept(ModItems.GRANA.get());
                         output.accept(ModItems.GRANA_SEEDS.get());
+                        output.accept(ModItems.MAGIC_STICK.get());
                         //BLOQUES
                         output.accept(ModBlocks.SUNFLOWER_BLOCK.get());
                         output.accept(ModBlocks.MAGIC_COMPOSTER.get());
+
                     })
                     .build()
             );

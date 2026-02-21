@@ -3,6 +3,7 @@ package com.alfa_jor.victoriawatering.item;
 import com.alfa_jor.victoriawatering.ModFoods;
 import com.alfa_jor.victoriawatering.VictoriaWatering;
 import com.alfa_jor.victoriawatering.block.ModBlocks;
+import com.alfa_jor.victoriawatering.item.custom.StickMagic;
 import com.alfa_jor.victoriawatering.item.custom.WateringCanItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -38,6 +39,9 @@ public class ModItems {
     public static final RegistryObject<Item> GRANA_SEEDS = ITEMS.register("grana_seeds",
             () -> new ItemNameBlockItem(ModBlocks.GRANA_CROP.get(),new Item.Properties())
     );
+
+    public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick",
+            () -> new StickMagic(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

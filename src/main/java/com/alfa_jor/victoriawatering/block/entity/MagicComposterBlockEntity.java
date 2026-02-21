@@ -1,6 +1,8 @@
 package com.alfa_jor.victoriawatering.block.entity;
 
+import com.alfa_jor.victoriawatering.effect.FruitEffectManager;
 import com.alfa_jor.victoriawatering.item.ModItems;
+import com.alfa_jor.victoriawatering.item.custom.StickMagic;
 import com.alfa_jor.victoriawatering.screen.MagicComposterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,6 +18,8 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,25 +35,25 @@ import org.jetbrains.annotations.Nullable;
 //2
 public class MagicComposterBlockEntity extends BlockEntity implements MenuProvider {
 
-   public final ItemStackHandler itemHandler = new ItemStackHandler(3);
+    public final ItemStackHandler itemHandler = new ItemStackHandler(3);
 
-   public static final int INPUT_SLOT_1 = 0;
-   public static final int INPUT_SLOT_2 = 1;
-   public static final int OUTPUT_SLOT = 2;
+    public static final int INPUT_SLOT_1 = 0;
+    public static final int INPUT_SLOT_2 = 1;
+    public static final int OUTPUT_SLOT = 2;
 
-   private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
-   protected ContainerData data;
-   private int progress = 0;
-   private int maxProgress = 78;
+    protected ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 78;
 
     public MagicComposterBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super( ModBlockEntities.MAGIC_COMPOSTER_BE.get(), pPos, pBlockState);
+        super(ModBlockEntities.MAGIC_COMPOSTER_BE.get(), pPos, pBlockState);
 
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
-                return switch (pIndex){
+                return switch (pIndex) {
                     case 0 -> MagicComposterBlockEntity.this.progress;
                     case 1 -> MagicComposterBlockEntity.this.maxProgress;
                     default -> 0;
@@ -58,10 +62,11 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
 
             @Override
             public void set(int pIndex, int pValue) {
-                switch (pIndex){
-                  case 0 -> MagicComposterBlockEntity.this.progress = pValue;
-                  case 1 -> MagicComposterBlockEntity.this.maxProgress = pValue;
-                };
+                switch (pIndex) {
+                    case 0 -> MagicComposterBlockEntity.this.progress = pValue;
+                    case 1 -> MagicComposterBlockEntity.this.maxProgress = pValue;
+                }
+                ;
             }
 
             @Override
@@ -73,7 +78,7 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ITEM_HANDLER){
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
 
@@ -92,14 +97,14 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
         lazyItemHandler.invalidate();
     }
 
-    public void drops(){
+    public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
 
-        for (int i = 0; i < itemHandler.getSlots(); i++){
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
-        Containers.dropContents(this.level, this.worldPosition,inventory);
+        Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
     @Override
@@ -129,11 +134,11 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if (hasRecipe()){
+        if (hasRecipe()) {
             increaseCraftingProgress();
             setChanged(pLevel, pPos, pState);
 
-            if (hasProgressFinished()){
+            if (hasProgressFinished()) {
                 craftItem();
                 resetProgress();
             }
@@ -146,19 +151,23 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     private void resetProgress() {
         progress = 0;
     }
+
     //---
     private void craftItem() {
-        ItemStack resutl = new ItemStack(ModItems.GRANA.get(), 1);
+        ItemStack slot1 = itemHandler.getStackInSlot(INPUT_SLOT_1).copy();
+        ItemStack slot2 = itemHandler.getStackInSlot(INPUT_SLOT_2).copy();
 
         this.itemHandler.extractItem(INPUT_SLOT_1, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
 
+        ItemStack result = FruitEffectManager.enchantItem(slot1, slot2);//<-------------
+
         ItemStack outputStack = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
-        if (outputStack.isEmpty()){
-            itemHandler.setStackInSlot(OUTPUT_SLOT, resutl);
+        if (outputStack.isEmpty()) {
+            itemHandler.setStackInSlot(OUTPUT_SLOT, result);
         } else {
-            outputStack.grow(resutl.getCount());
+            outputStack.grow(result.getCount());
         }
     }
 
@@ -169,12 +178,13 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     private void increaseCraftingProgress() {
         progress++;
     }
+
     //---
     private boolean hasRecipe() {
 
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() == Items.DIRT && this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem() == Items.STONE_SWORD;
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() instanceof SwordItem && this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem() == ModItems.GRANA.get();
 
-        ItemStack result = new ItemStack(ModItems.GRANA.get());
+        ItemStack result = itemHandler.getStackInSlot(INPUT_SLOT_1);
 
         return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
 
@@ -187,4 +197,5 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     private boolean canInsertAmountIntoOutputSlot(int count) {
         return itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
+
 }

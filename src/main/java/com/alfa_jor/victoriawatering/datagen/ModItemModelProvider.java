@@ -33,6 +33,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.FLOWER_CILANTRO);
         simpleItem(ModItems.GRANA);
         simpleItem(ModItems.GRANA_SEEDS);
+
+        withExistingParent(ModItems.MAGIC_STICK.getId().getPath(), "item/generated")
+                .texture("layer0", "minecraft:item/stick");
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){
