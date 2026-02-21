@@ -24,7 +24,6 @@ public class MagicComposterMenu extends AbstractContainerMenu {
 
     public MagicComposterMenu(int pContainerID, Inventory iv, BlockEntity entity, ContainerData data){
         super(ModMenuTypes.MAGIC_COMPOSTER_MENU.get(), pContainerID);
-        checkContainerSize(iv, 2);
         blockEntity = (MagicComposterBlockEntity) entity;
         this.level = iv.player.level();
         this.data = data;
@@ -33,8 +32,9 @@ public class MagicComposterMenu extends AbstractContainerMenu {
         addPlayerHotbar(iv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 80, 11));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 80, 59));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 63, 11));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 97, 11));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 80, 59));
 
         });
 
@@ -69,7 +69,7 @@ public class MagicComposterMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

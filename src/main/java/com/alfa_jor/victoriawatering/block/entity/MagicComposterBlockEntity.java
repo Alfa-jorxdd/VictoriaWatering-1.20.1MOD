@@ -31,10 +31,11 @@ import org.jetbrains.annotations.Nullable;
 //2
 public class MagicComposterBlockEntity extends BlockEntity implements MenuProvider {
 
-   public final ItemStackHandler itemHandler = new ItemStackHandler(2);
+   public final ItemStackHandler itemHandler = new ItemStackHandler(3);
 
-   public static final int INPUT_SLOT = 0;
-   public static final int OUTPUT_SLOT = 1;
+   public static final int INPUT_SLOT_1 = 0;
+   public static final int INPUT_SLOT_2 = 1;
+   public static final int OUTPUT_SLOT = 2;
 
    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -145,15 +146,20 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     private void resetProgress() {
         progress = 0;
     }
-
+    //---
     private void craftItem() {
         ItemStack resutl = new ItemStack(ModItems.GRANA.get(), 1);
 
-        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT_1, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resutl.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resutl.getCount()));
+        ItemStack outputStack = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
+        if (outputStack.isEmpty()){
+            itemHandler.setStackInSlot(OUTPUT_SLOT, resutl);
+        } else {
+            outputStack.grow(resutl.getCount());
+        }
     }
 
     private boolean hasProgressFinished() {
@@ -163,10 +169,10 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     private void increaseCraftingProgress() {
         progress++;
     }
-
+    //---
     private boolean hasRecipe() {
 
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.DIRT;
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() == Items.DIRT && this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem() == Items.STONE_SWORD;
 
         ItemStack result = new ItemStack(ModItems.GRANA.get());
 
