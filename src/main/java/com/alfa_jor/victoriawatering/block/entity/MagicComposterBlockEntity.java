@@ -2,7 +2,6 @@ package com.alfa_jor.victoriawatering.block.entity;
 
 import com.alfa_jor.victoriawatering.effect.FruitEffectManager;
 import com.alfa_jor.victoriawatering.item.ModItems;
-import com.alfa_jor.victoriawatering.item.custom.StickMagic;
 import com.alfa_jor.victoriawatering.screen.MagicComposterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

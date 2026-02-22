@@ -1,11 +1,12 @@
 package com.alfa_jor.victoriawatering.effect;
 
-import com.alfa_jor.victoriawatering.ModFoods;
+
 import com.alfa_jor.victoriawatering.item.ModItems;
-import net.minecraft.world.item.Item;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.Enchantments;
+import org.checkerframework.checker.units.qual.C;
 
 public class FruitEffectManager  {
 
@@ -20,10 +21,10 @@ public class FruitEffectManager  {
     public static ItemStack enchantItem(ItemStack stack1, ItemStack stack2 ){
 
         if(manager(stack1, INPUT_1) && manager(stack2, INPUT_2)){
-            return enchant(stack1, stack2);
+            return insertTag(stack1, stack2);
 
         } else {
-            return stack1.EMPTY;
+            return ItemStack.EMPTY;
         }
 
 
@@ -42,12 +43,13 @@ public class FruitEffectManager  {
     }
 
 
-    public static ItemStack enchant(ItemStack arma, ItemStack fruit){
+    public static ItemStack insertTag(ItemStack arma, ItemStack fruit){
 
-        if (fruit.is(fruit.getItem())){
-            arma.enchant(Enchantments.SHARPNESS, 6);
+        if (fruit.is(ModItems.GRANA.get())){
+            arma.getOrCreateTag().putString("victoria:fruit", "grana");
+
+            return arma;
         }
-
         return arma;
 
     }

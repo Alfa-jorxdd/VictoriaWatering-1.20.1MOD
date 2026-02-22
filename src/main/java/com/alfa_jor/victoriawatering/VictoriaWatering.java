@@ -2,6 +2,7 @@ package com.alfa_jor.victoriawatering;
 
 import com.alfa_jor.victoriawatering.block.ModBlocks;
 import com.alfa_jor.victoriawatering.block.entity.ModBlockEntities;
+import com.alfa_jor.victoriawatering.events.EffectsItemsEventMod;
 import com.alfa_jor.victoriawatering.item.ModCreativeModTabs;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import com.alfa_jor.victoriawatering.screen.MagicComposterScreen;
@@ -42,6 +43,7 @@ public class VictoriaWatering
         ModBlockEntities.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new EffectsItemsEventMod());
         bus.addListener(this::addCreative);
     }
 
