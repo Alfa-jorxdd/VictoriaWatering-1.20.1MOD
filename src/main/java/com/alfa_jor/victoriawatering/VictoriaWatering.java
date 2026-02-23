@@ -2,14 +2,14 @@ package com.alfa_jor.victoriawatering;
 
 import com.alfa_jor.victoriawatering.block.ModBlocks;
 import com.alfa_jor.victoriawatering.block.entity.ModBlockEntities;
-import com.alfa_jor.victoriawatering.events.EffectsItemsEventMod;
+import com.alfa_jor.victoriawatering.effect.event.EffectsItemsEventMod;
 import com.alfa_jor.victoriawatering.item.ModCreativeModTabs;
+import com.alfa_jor.victoriawatering.item.ModFoodItems;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import com.alfa_jor.victoriawatering.screen.MagicComposterScreen;
 import com.alfa_jor.victoriawatering.screen.ModMenuTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,6 +37,7 @@ public class VictoriaWatering
         //OBJETOS
         ModItems.register(bus);
         ModBlocks.register(bus);
+        ModFoodItems.register(bus);
 
         ModMenuTypes.register(bus);
 

@@ -3,7 +3,6 @@ package com.alfa_jor.victoriawatering.item;
 import com.alfa_jor.victoriawatering.ModFoods;
 import com.alfa_jor.victoriawatering.VictoriaWatering;
 import com.alfa_jor.victoriawatering.block.ModBlocks;
-import com.alfa_jor.victoriawatering.item.custom.StickMagic;
 import com.alfa_jor.victoriawatering.item.custom.WateringCanItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -20,28 +19,18 @@ public class ModItems {
     public static final RegistryObject<Item> WATERING_CAN = ITEMS.register("wateringcan",
             () -> new WateringCanItem(new Item.Properties().stacksTo(1))
     );
-    public static final RegistryObject<Item> MANGO = ITEMS.register("mango",
-            () -> new Item(new Item.Properties().food(ModFoods.MANGO))
-    );
+
     public static final RegistryObject<Item> CILANTRO_SEEDS = ITEMS.register("cilantro_seeds",
             () -> new ItemNameBlockItem(ModBlocks.CILANTRO_CROP.get(),new Item.Properties())
     );
-    public static final RegistryObject<Item> CILANTRO = ITEMS.register("cilantro",
-            () -> new Item(new Item.Properties())
-    );
+
     public static final RegistryObject<Item> FLOWER_CILANTRO = ITEMS.register("flower_cilantro",
             () -> new Item(new Item.Properties())
     );
 
-    public static final RegistryObject<Item> GRANA = ITEMS.register("grana",
-            () -> new Item(new Item.Properties().food(ModFoods.GRANA)));
-
     public static final RegistryObject<Item> GRANA_SEEDS = ITEMS.register("grana_seeds",
             () -> new ItemNameBlockItem(ModBlocks.GRANA_CROP.get(),new Item.Properties())
     );
-
-    public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick",
-            () -> new StickMagic(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

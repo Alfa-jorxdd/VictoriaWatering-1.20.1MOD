@@ -18,18 +18,18 @@ public class ModCreativeModTabs {
 
     //PESTAÑA EN EL CREATIVO
     public static final RegistryObject<CreativeModeTab> VICWAT_TAB = CREATIVE_MOD_TABS.register("vicwat_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MANGO.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModFoodItems.MANGO.get()))
                     .title(Component.translatable("creativetab.vicwat_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         //ITEMS
+                        output.accept(ModFoodItems.MANGO.get());
+                        output.accept(ModFoodItems.GRANA.get());
+                        output.accept(ModFoodItems.CILANTRO.get());
+
                         output.accept(ModItems.WATERING_CAN.get());
-                        output.accept(ModItems.MANGO.get());
                         output.accept(ModItems.CILANTRO_SEEDS.get());
-                        output.accept(ModItems.CILANTRO.get());
                         output.accept(ModItems.FLOWER_CILANTRO.get());
-                        output.accept(ModItems.GRANA.get());
                         output.accept(ModItems.GRANA_SEEDS.get());
-                        output.accept(ModItems.MAGIC_STICK.get());
                         //BLOQUES
                         output.accept(ModBlocks.SUNFLOWER_BLOCK.get());
                         output.accept(ModBlocks.MAGIC_COMPOSTER.get());

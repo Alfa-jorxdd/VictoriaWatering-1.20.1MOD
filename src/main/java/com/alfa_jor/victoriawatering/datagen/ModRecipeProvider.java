@@ -2,18 +2,14 @@ package com.alfa_jor.victoriawatering.datagen;
 
 import com.alfa_jor.victoriawatering.VictoriaWatering;
 import com.alfa_jor.victoriawatering.block.ModBlocks;
-import com.alfa_jor.victoriawatering.item.ModItems;
-import net.minecraft.client.Minecraft;
+import com.alfa_jor.victoriawatering.item.ModFoodItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.List;
@@ -37,7 +33,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.SUNFLOWER), has(Items.SUNFLOWER))
                 .save(pWriter);
         //Mango
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.MANGO.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModFoodItems.MANGO.get())
                 .pattern(" A ")
                 .pattern("ASA")
                 .pattern(" A ")

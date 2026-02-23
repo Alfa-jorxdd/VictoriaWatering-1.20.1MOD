@@ -1,6 +1,7 @@
 package com.alfa_jor.victoriawatering.datagen;
 
 import com.alfa_jor.victoriawatering.VictoriaWatering;
+import com.alfa_jor.victoriawatering.item.ModFoodItems;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -26,16 +27,15 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(ModItems.MANGO);
+        simpleItem(ModFoodItems.MANGO);
+        simpleItem(ModFoodItems.GRANA);
+        simpleItem(ModFoodItems.CILANTRO);
+
         simpleItem(ModItems.WATERING_CAN);
-        simpleItem(ModItems.CILANTRO);
         simpleItem(ModItems.CILANTRO_SEEDS);
         simpleItem(ModItems.FLOWER_CILANTRO);
-        simpleItem(ModItems.GRANA);
         simpleItem(ModItems.GRANA_SEEDS);
 
-        withExistingParent(ModItems.MAGIC_STICK.getId().getPath(), "item/generated")
-                .texture("layer0", "minecraft:item/stick");
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

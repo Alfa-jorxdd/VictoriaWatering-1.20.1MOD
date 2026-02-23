@@ -1,6 +1,8 @@
 package com.alfa_jor.victoriawatering.block.entity;
 
-import com.alfa_jor.victoriawatering.effect.FruitEffectManager;
+import com.alfa_jor.victoriawatering.Class;
+import com.alfa_jor.victoriawatering.effect.FruitTagManager;
+import com.alfa_jor.victoriawatering.item.ModFoodItems;
 import com.alfa_jor.victoriawatering.item.ModItems;
 import com.alfa_jor.victoriawatering.screen.MagicComposterMenu;
 import net.minecraft.core.BlockPos;
@@ -16,9 +18,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -159,7 +159,7 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
         this.itemHandler.extractItem(INPUT_SLOT_1, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
 
-        ItemStack result = FruitEffectManager.enchantItem(slot1, slot2);//<-------------
+        ItemStack result = FruitTagManager.insertTagItem(slot1, slot2.getItem());//<-------------
 
         ItemStack outputStack = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
@@ -181,7 +181,8 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     //---
     private boolean hasRecipe() {
 
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() instanceof SwordItem && this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem() == ModItems.GRANA.get();
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() instanceof SwordItem //<---- SOLO ADMITE ESPADAS
+                && Class.containFruit(this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem());
 
         ItemStack result = itemHandler.getStackInSlot(INPUT_SLOT_1);
 
