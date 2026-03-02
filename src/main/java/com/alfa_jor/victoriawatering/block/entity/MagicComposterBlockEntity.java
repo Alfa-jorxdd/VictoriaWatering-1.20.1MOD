@@ -1,9 +1,7 @@
 package com.alfa_jor.victoriawatering.block.entity;
 
-import com.alfa_jor.victoriawatering.Class;
+import com.alfa_jor.victoriawatering.effect.FruitEffect;
 import com.alfa_jor.victoriawatering.effect.FruitTagManager;
-import com.alfa_jor.victoriawatering.item.ModFoodItems;
-import com.alfa_jor.victoriawatering.item.ModItems;
 import com.alfa_jor.victoriawatering.screen.MagicComposterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -182,7 +180,7 @@ public class MagicComposterBlockEntity extends BlockEntity implements MenuProvid
     private boolean hasRecipe() {
 
         boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() instanceof SwordItem //<---- SOLO ADMITE ESPADAS
-                && Class.containFruit(this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem());
+                && FruitEffect.containFruit(this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem());
 
         ItemStack result = itemHandler.getStackInSlot(INPUT_SLOT_1);
 

@@ -1,7 +1,6 @@
-package com.alfa_jor.victoriawatering;
+package com.alfa_jor.victoriawatering.effect;
 
 import com.alfa_jor.victoriawatering.item.ModFoodItems;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
@@ -9,7 +8,7 @@ import net.minecraft.world.item.Item;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-public class Class {
+public class FruitEffect {
 
     private static final HashMap<Item, Supplier<MobEffectInstance>> FRUIT = new HashMap<>();
 
