@@ -28,7 +28,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         createCropBlockStates(ModBlocks.CILANTRO_CROP.get(), CilantroCropblock.AGE, "cilantro_stage", "cilantro_stage");
         createCropBlockStates(ModBlocks.GRANA_CROP.get(), GranaCropBlock.AGE, "grana_stage", "grana_stage");
 
-        blockWithItem(ModBlocks.MAGIC_COMPOSTER);
+        simpleBlockWithItem(
+                ModBlocks.MAGIC_COMPOSTER.get(),
+                models().getExistingFile(modLoc("block/magic_composter1"))
+        );
     }
 
     private void createCropBlockStates(Block pBlock, IntegerProperty pCropAgeProperty, String pModelName, String pTextureName){
